@@ -11,41 +11,27 @@ import LoveTimerPage from './pages/LoveTimerPage';
 import EnhancedBackground from './components/common/EnhancedBackground';
 
 // Tạm sử dụng một trang đơn giản cho các route còn lại
-const PersonalityPage = () => {
-  // Hide navigation on this page
-  useEffect(() => {
-    // Add a class to the body to handle full screen
-    document.body.classList.add('personality-page-open');
-    
-    return () => {
-      // Remove the class when component unmounts
-      document.body.classList.remove('personality-page-open');
-    };
-  }, []);
-  
-  return (
-    <div className="fixed inset-0 z-50 bg-black">
-      <div className="w-full h-full overflow-hidden">
+const PersonalityPage = () => (
+  <div className="flex flex-col h-screen pt-16 pb-16">
+    <div className="flex-grow relative">
+      <div className="absolute inset-0" style={{ zIndex: 10 }}>
         <iframe 
           src="https://taoanhdep.com/love/?b=eyJ0IjpbIk1pbyB4aW5oIHF1w7NvbyIsIk1pbyB4aW5oIMSR4bq5cHAiLCJBbmggbmjhu5sgZW1tbW0iLCJBbmggecOqdSBlbSIsIllhbWluIGl1dXUgTWlvb28iLCJNdeG7kW4gw7RtIGVtbSIsIkkgbWlzcyB1Il0sImEiOiJwbSJ9" 
           width="100%" 
           height="100%" 
           style={{
             border: 'none',
-            marginTop: '-180px', // Adjusted to better center the content
-            transform: 'scale(1.05)', // Slightly scale up to fill more of the screen
-            transformOrigin: 'top center',
+            marginTop: '-200px', // Điều chỉnh để chỉ hiển thị tên "Văn Bảo Ngọc"
             pointerEvents: 'auto'
           }}
           title="Love Look"
-          allow="fullscreen"
         />
       </div>
-      {/* Transparent overlay for navigation at bottom */}
-      <div className="fixed bottom-0 left-0 right-0 h-16 bg-transparent" style={{ zIndex: 60 }}></div>
+      {/* Transparent overlay to ensure navigation is clickable */}
+      <div className="fixed bottom-0 left-0 right-0 h-16" style={{ zIndex: 20 }}></div>
     </div>
-  );
-};
+  </div>
+);
 
 const CombinePage = () => (
   <div className="container py-10 text-center">
@@ -93,12 +79,6 @@ function App() {
     // Hide navigation, header, footer and custom background on the journey page
     if (location.pathname === '/journey') {
       setShowNavigation(false);
-      setShowHeader(false);
-      setShowFooter(false);
-      setShowBackground(false);
-    } else if (location.pathname === '/personality') {
-      // For personality page, only show navigation
-      setShowNavigation(true);
       setShowHeader(false);
       setShowFooter(false);
       setShowBackground(false);
