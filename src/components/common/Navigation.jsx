@@ -1,15 +1,18 @@
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaHome, FaChartPie, FaUser, FaStar, FaBookOpen, FaMagic, FaHeart } from 'react-icons/fa';
+import { FaHome, FaChartPie, FaUser, FaStar, FaBookOpen, FaMagic, FaHeart, FaCamera, FaLink, FaArchive } from 'react-icons/fa';
 
 const Navigation = () => {
+  // Tất cả các icon sẽ có màu đơn sắc
+  const iconColor = "text-[#1a1033]";
+
   const navItems = [
-    { path: '/', label: 'Trang Chủ', icon: <FaHome /> },
-    { path: '/birth-chart', label: 'Bản Đồ Sao', icon: <FaChartPie /> },
-    { path: '/planets', label: 'Các Hành Tinh', icon: <FaStar /> },
-    { path: '/personality', label: 'Tính Cách', icon: <FaUser /> },
-    { path: '/insights', label: 'Phân Tích', icon: <FaBookOpen /> },
-    { path: '/love-timer', label: 'Tình Yêu', icon: <FaHeart className="text-planet-venus" /> },
+    { path: '/', label: 'Trang Chủ', icon: <FaHome className={iconColor} /> },
+    { path: '/planets', label: 'Các Hành Tinh', icon: <FaStar className={iconColor} /> },
+    { path: '/personality', label: 'Love Look', icon: <FaCamera className={iconColor} /> },
+    { path: '/insights', label: 'Kết Hợp', icon: <FaLink className={iconColor} /> },
+    { path: '/archive', label: 'Lưu Trữ', icon: <FaArchive className={iconColor} /> },
+    { path: '/love-timer', label: 'Tình Yêu', icon: <FaHeart className={iconColor} /> },
   ];
 
   return (
@@ -17,7 +20,6 @@ const Navigation = () => {
       className="main-nav"
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
     >
       <div className="flex justify-center space-x-2 w-full items-center">
         {navItems.map((item) => (
@@ -47,7 +49,7 @@ const Navigation = () => {
           }
         >
           <motion.div
-            className="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-mystic-peach to-mystic-blue rounded-full text-[#1a1033] font-semibold"
+            className="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-mystic-peach to-mystic-blue rounded-full text-[#1a1033] font-semibold shadow-glow"
             whileHover={{ 
               scale: 1.1,
               boxShadow: "0 0 15px rgba(159, 111, 255, 0.7)"
@@ -63,7 +65,7 @@ const Navigation = () => {
               repeatType: "loop"
             }}
           >
-            <FaMagic className="text-xl" />
+            <FaMagic className={iconColor} />
           </motion.div>
           <span className="block text-xs mt-1 text-[#1a1033] font-medium">Hành Trình</span>
         </NavLink>

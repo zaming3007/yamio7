@@ -10,7 +10,7 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          © {new Date().getFullYear()} Văn Bảo Ngọc - Phân tích chiêm tinh
+          © {new Date().getFullYear()} Văn Bảo Ngọc - Yamio
         </motion.p>
         
         <motion.div 

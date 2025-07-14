@@ -24,7 +24,7 @@ const Header = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            Phân Tích Chiêm Tinh
+            Yamin <span className="text-rose-500">❤</span> Mio
           </motion.p>
           
           <motion.div 

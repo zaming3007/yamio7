@@ -11,37 +11,41 @@ import LoveTimerPage from './pages/LoveTimerPage';
 import EnhancedBackground from './components/common/EnhancedBackground';
 
 // Tạm sử dụng một trang đơn giản cho các route còn lại
-const BirthChartPage = () => (
-  <div className="container py-10 text-center">
-    <h1 className="text-3xl font-display font-bold mb-4 text-gradient">Bản Đồ Sao</h1>
-    <p className="text-overlay content-backdrop">Trang đang được phát triển...</p>
-  </div>
-);
-
 const PersonalityPage = () => (
-  <div className="flex flex-col h-screen">
-    <h1 className="text-3xl font-display font-bold py-4 text-gradient text-center flex items-center justify-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-red-500">
-        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-      </svg>
-      Mio & Yamin
-    </h1>
-    <div className="flex-grow">
-      <iframe 
-        src="https://taoanhdep.com/love/?b=eyJ0IjpbIk1pbyBDxrBuZyBj4bunYSBhbmtrayIsIllhbWluIHnDqnUgTWlvIiwiTWlvIGPDsyB5w6p1IGFuaCBoxINtPyIsIlnDqnV1dXUiLCJNaW8gTmdvYW4gbmjDqWUiLCJOaOG7nyBlbSBxdcOhYWFhIiwiTcOqIGVtIG7hu69hYWFhYWFhYWEiXSwiYSI6InBtIn0=" 
-        width="100%" 
-        height="100%" 
-        style={{border: 'none'}}
-        title="Tình yêu Mio & Yamin"
-      />
+  <div className="flex flex-col h-screen pt-16 pb-16">
+    <div className="flex-grow relative">
+      <div className="absolute inset-0" style={{ zIndex: 10 }}>
+        <iframe 
+          src="https://taoanhdep.com/love/?b=eyJ0IjpbIk1pbyBDxrBuZyBj4bunYSBhbmtrayIsIllhbWluIHnDqnUgTWlvIiwiTWlvIGPDsyB5w6p1IGFuaCBoxINtPyIsIlnDqnV1dXUiLCJNaW8gTmdvYW4gbmjDqWUiLCJOaOG7nyBlbSBxdcOhYWFhIiwiTcOqIGVtIG7hu69hYWFhYWFhYWEiXSwiYSI6InBtIn0=" 
+          width="100%" 
+          height="100%" 
+          style={{
+            border: 'none',
+            marginTop: '-175px', // Điều chỉnh để chỉ hiển thị tên "Văn Bảo Ngọc"
+            pointerEvents: 'auto'
+          }}
+          title="Love Look"
+        />
+      </div>
+      {/* Transparent overlay to ensure navigation is clickable */}
+      <div className="fixed bottom-0 left-0 right-0 h-16" style={{ zIndex: 20 }}></div>
     </div>
   </div>
 );
 
-const InsightsPage = () => (
+const CombinePage = () => (
   <div className="container py-10 text-center">
-    <h1 className="text-3xl font-display font-bold mb-4 text-gradient">Phân Tích</h1>
-    <p className="text-overlay content-backdrop">Trang đang được phát triển...</p>
+    <h1 className="text-3xl font-display font-bold mb-4 text-gradient">Văn Bảo Ngọc</h1>
+    <p className="text-overlay content-backdrop">Mio - 2/10/2002</p>
+    <p className="mt-6 text-overlay content-backdrop">Tính năng Kết Hợp đang được phát triển...</p>
+  </div>
+);
+
+const ArchivePage = () => (
+  <div className="container py-10 text-center">
+    <h1 className="text-3xl font-display font-bold mb-4 text-gradient">Văn Bảo Ngọc</h1>
+    <p className="text-overlay content-backdrop">Mio - 2/10/2002</p>
+    <p className="mt-6 text-overlay content-backdrop">Tính năng Lưu Trữ đang được phát triển...</p>
   </div>
 );
 
@@ -54,10 +58,10 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
         <Route path="/journey" element={<JourneyPage />} />
-        <Route path="/birth-chart" element={<BirthChartPage />} />
         <Route path="/planets" element={<PlanetsPage />} />
         <Route path="/personality" element={<PersonalityPage />} />
-        <Route path="/insights" element={<InsightsPage />} />
+        <Route path="/insights" element={<CombinePage />} />
+        <Route path="/archive" element={<ArchivePage />} />
         <Route path="/love-timer" element={<LoveTimerPage />} />
       </Routes>
     </AnimatePresence>
@@ -79,10 +83,13 @@ function App() {
       setShowFooter(false);
       setShowBackground(false);
     } else {
-      setShowNavigation(true);
-      setShowHeader(true);
-      setShowFooter(true);
-      setShowBackground(true);
+      // Đảm bảo các thành phần UI được hiển thị lại khi chuyển từ trang hành trình sang trang khác
+      setTimeout(() => {
+        setShowNavigation(true);
+        setShowHeader(true);
+        setShowFooter(true);
+        setShowBackground(true);
+      }, 0);
     }
   }, [location.pathname]);
   

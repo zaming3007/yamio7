@@ -1,33 +1,42 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { PieChart, Star, User, BookOpen, ArrowRight, Heart } from 'lucide-react';
+import { Star, BookOpen, ArrowRight, Heart, Camera, Link as LinkIcon, Archive } from 'lucide-react';
 import AnimatedRoute from '../components/common/AnimatedRoute';
 
 const HomePage = () => {
+  // Define icon styles with direct colors instead of gradients
+  const iconStyles = {
+    planets: "text-amber-500",
+    camera: "text-pink-500",
+    link: "text-indigo-500",
+    archive: "text-yellow-500",
+    heart: "text-rose-500",
+  };
+
   const features = [
     {
-      path: '/birth-chart',
-      icon: <PieChart className="text-4xl text-[#1A1033] opacity-80 mb-3" size={36} />,
-      title: 'Bản Đồ Sao',
-      description: 'Khám phá bản đồ sao chi tiết và ý nghĩa của từng vị trí',
-    },
-    {
       path: '/planets',
-      icon: <Star className="text-4xl text-[#1A1033] opacity-80 mb-3" size={36} />,
+      icon: <Star className={`text-4xl mb-3 ${iconStyles.planets}`} size={36} strokeWidth={1.5} />,
       title: 'Các Hành Tinh',
       description: 'Tìm hiểu về ảnh hưởng của từng hành tinh lên tính cách của bạn',
     },
     {
       path: '/personality',
-      icon: <User className="text-4xl text-[#1A1033] opacity-80 mb-3" size={36} />,
-      title: 'Tính Cách',
-      description: 'Phân tích chi tiết tính cách dựa trên chiêm tinh học',
+      icon: <Camera className={`text-4xl mb-3 ${iconStyles.camera}`} size={36} strokeWidth={1.5} />,
+      title: 'Love Look',
+      description: 'Yamin import cho Mio đó, gọi là tham khảo tr',
     },
     {
       path: '/insights',
-      icon: <BookOpen className="text-4xl text-[#1A1033] opacity-80 mb-3" size={36} />,
-      title: 'Phân Tích',
-      description: 'Những insight sâu sắc và lời khuyên từ bản đồ sao của bạn',
+      icon: <LinkIcon className={`text-4xl mb-3 ${iconStyles.link}`} size={36} strokeWidth={1.5} />,
+      title: 'Kết Hợp',
+      description: 'Kết nối và khám phá sự tương thích giữa hai người',
+    },
+    {
+      path: '/archive',
+      icon: <Archive className={`text-4xl mb-3 ${iconStyles.archive}`} size={36} strokeWidth={1.5} />,
+      title: 'Lưu Trữ',
+      description: 'Lưu giữ những kỷ niệm đáng nhớ của hai người',
     },
   ];
 
@@ -62,86 +71,29 @@ const HomePage = () => {
           transition={{ duration: 0.7 }}
           className="text-center mb-8"
         >
-          <h1
-            className="font-display text-4xl md:text-5xl font-bold mb-4 text-gradient drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)]"
-            style={{ WebkitTextStroke: '0.4px rgba(0,0,0,0.1)' }}
-          >
-            Văn Bảo Ngọc
-          </h1>
-
-
-          <motion.div
-            className="mt-4 inline-flex space-x-2 items-center bg-white bg-opacity-10 p-2 px-4 rounded-full text-sm"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            <span className="text-[#1a1033] text-opacity-70">02/10/2002</span>
-            <span className="text-[#1a1033] text-opacity-50">•</span>
-            <span className="text-[#1a1033] text-opacity-70">22:00</span>
-            <span className="text-[#1a1033] text-opacity-50">•</span>
-            <span className="text-[#1a1033] text-opacity-70">TP. Hồ Chí Minh</span>
-          </motion.div>
+          <h1 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gradient">Văn Bảo Ngọc</h1>
+          <p className="text-overlay content-backdrop">Mio - 2/10/2002</p>
         </motion.div>
 
-        {/* Journey call-to-action */}
         <motion.div
-          className="mb-10"
-          initial={{ opacity: 0, y: 30 }}
+          className="glass-card relative overflow-hidden mb-8"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <Link
-            to="/journey"
-            className="block bg-white bg-opacity-25 backdrop-blur-md hover:bg-opacity-40 transition-all duration-300 rounded-xl p-6 border border-white border-opacity-20 shadow-glass text-center relative overflow-hidden group"
-          >
-            <div className="relative z-10">
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-[#1a1033]">
-                Bắt Đầu Hành Trình Khám Phá
-              </h2>
-              <p className="text-[#1a1033] font-medium mb-4">
-                Trải nghiệm những hiểu biết sâu sắc về bản thân thông qua một hành trình đắm chìm vào thế giới chiêm tinh học
-              </p>
-
+          <Link to="/love-timer" className="block relative z-10 p-2">
+            <div className="flex items-center justify-between">
+              <div className="flex-1">
+                <div className="flex items-center mb-2">
+                  <Heart className={`mr-2 ${iconStyles.heart}`} size={24} strokeWidth={1.5} />
+                  <h3 className="text-xl font-display text-[#1a1033]">Tình Yêu</h3>
+                </div>
+                <p className="text-[#1a1033] text-opacity-70 text-sm mb-4">
+                  Đếm ngày yêu nhau và những khoảnh khắc đáng nhớ
+                </p>
+              </div>
               <motion.div
-                className="inline-flex items-center space-x-2 px-5 py-2 bg-[#1a1033] text-white rounded-full font-medium"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span>Khám phá ngay</span>
-                <ArrowRight size={16} />
-              </motion.div>
-            </div>
-
-            {/* Decorative background */}
-            <div className="absolute inset-0 opacity-30 z-0">
-              <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-gradient-to-r from-mystic-peach to-mystic-blue blur-xl"></div>
-              <div className="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-gradient-to-r from-mystic-blue to-mystic-purple blur-xl"></div>
-            </div>
-          </Link>
-        </motion.div>
-
-        {/* Love Timer call-to-action */}
-        <motion.div
-          className="mb-10"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
-          <Link
-            to="/love-timer"
-            className="block bg-white bg-opacity-25 backdrop-blur-md hover:bg-opacity-40 transition-all duration-300 rounded-xl p-6 border border-white border-opacity-20 shadow-glass text-center relative overflow-hidden group"
-          >
-            <div className="relative z-10">
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-[#1a1033]">
-                Mio <Heart className="inline text-red-500 mx-2" size={24} /> Yamin
-              </h2>
-              <p className="text-[#1a1033] font-medium mb-4">
-                Hành trình tình yêu bắt đầu từ 14.06.2025 - Theo dõi khoảng thời gian chúng mình bên nhau
-              </p>
-
-              <motion.div
-                className="inline-flex items-center space-x-2 px-5 py-2 bg-red-500 text-white rounded-full font-medium"
+                className="flex items-center space-x-1 bg-white bg-opacity-25 px-3 py-2 rounded-full text-sm text-[#1a1033]"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
