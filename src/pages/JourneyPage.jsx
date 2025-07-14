@@ -817,8 +817,10 @@ const ConclusionSection = ({ progress, onJourneyComplete }) => {
             </p>
             
             <p className="text-[#1a1033] text-lg mt-6 italic">
-              Yamin biết mọi thứ trong đây cũng dựa vào bản đồ sao - thứ anh học được ở em, mong là anh viết đúng, đủ, nếu chưa anh sẽ bổ sung thêm sau nhéenhée.
-            </p>
+            Yamin biết, mọi điều Yamin viết ở đây đều bắt nguồn từ bản đồ sao gì đó – thứ mà Yamin đã tìm hiểu vì Mio.
+            Anh mong mình đã nói đúng, đủ, và thật. Còn nếu có điều gì anh chưa chạm tới,
+            thì anh sẽ lặng lẽ học thêm, lắng nghe thêm – rồi bổ sung sau nhaaa.
+            </p> 
           </motion.div>
           
           <div className="space-y-4">
@@ -923,10 +925,10 @@ const JourneyPage = () => {
         onNavigate={navigateToSection}
       />
       
-      {/* Navigation toggle button */}
+      {/* Navigation toggle button - only visible on desktop and when journey is complete */}
       {journeyComplete && (
         <motion.div 
-          className="fixed bottom-6 right-6 z-50"
+          className="fixed bottom-6 right-6 z-50 hidden md:flex"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 500, damping: 30 }}
