@@ -19,9 +19,22 @@ const BirthChartPage = () => (
 );
 
 const PersonalityPage = () => (
-  <div className="container py-10 text-center">
-    <h1 className="text-3xl font-display font-bold mb-4 text-gradient">Tính Cách</h1>
-    <p className="text-overlay content-backdrop">Trang đang được phát triển...</p>
+  <div className="flex flex-col h-screen">
+    <h1 className="text-3xl font-display font-bold py-4 text-gradient text-center flex items-center justify-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-red-500">
+        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+      </svg>
+      Mio & Yamin
+    </h1>
+    <div className="flex-grow">
+      <iframe 
+        src="https://taoanhdep.com/love/?b=eyJ0IjpbIk1pbyBDxrBuZyBj4bunYSBhbmtrayIsIllhbWluIHnDqnUgTWlvIiwiTWlvIGPDsyB5w6p1IGFuaCBoxINtPyIsIlnDqnV1dXUiLCJNaW8gTmdvYW4gbmjDqWUiLCJOaOG7nyBlbSBxdcOhYWFhIiwiTcOqIGVtIG7hu69hYWFhYWFhYWEiXSwiYSI6InBtIn0=" 
+        width="100%" 
+        height="100%" 
+        style={{border: 'none'}}
+        title="Tình yêu Mio & Yamin"
+      />
+    </div>
   </div>
 );
 
