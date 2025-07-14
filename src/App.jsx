@@ -10,6 +10,17 @@ import JourneyPage from './pages/JourneyPage';
 import LoveTimerPage from './pages/LoveTimerPage';
 import EnhancedBackground from './components/common/EnhancedBackground';
 
+// ScrollToTop component to ensure page scrolls to top on route changes
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+};
+
 // Tạm sử dụng một trang đơn giản cho các route còn lại
 const PersonalityPage = () => (
   <div className="flex flex-col h-screen pt-16 pb-16">
@@ -95,6 +106,9 @@ function App() {
   
   return (
     <div className="min-h-screen relative overflow-hidden">
+      {/* Add ScrollToTop component to handle scrolling on route changes */}
+      <ScrollToTop />
+      
       {showBackground && <EnhancedBackground intensity="medium" />}
       
       {showHeader && <Header />}

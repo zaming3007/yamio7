@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 const pageVariants = {
   initial: {
@@ -22,6 +23,11 @@ const pageTransition = {
 };
 
 const AnimatedRoute = ({ children }) => {
+  // Scroll to top when component mounts (page changes)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <motion.div
       initial="initial"
